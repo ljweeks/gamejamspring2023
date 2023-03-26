@@ -5,7 +5,7 @@ extends Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,7 +16,7 @@ func _process(delta):
 		_teleport()
 	pass
 
-
+signal win
 
 func _teleport():
 	if($cast.get_collider() is TileMap):
@@ -31,3 +31,10 @@ func _teleport():
 		print("tile is:", tile_id)
 		if(tile_id.x == 1):
 			global_position = $cast.get_collision_point() - ($cast.get_collision_normal() * -32)
+		if(tile_id.x == 2):
+			_win()
+
+func _win():
+	print("win")
+	emit_signal("win")
+

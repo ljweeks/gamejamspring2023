@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5ijpugshf6j8"]
+[gd_scene load_steps=6 format=3 uid="uid://c5ijpugshf6j8"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72jgi"]
 [ext_resource type="Texture2D" uid="uid://dv2lqvdy08uji" path="res://icon.svg" id="2_7q0x4"]
 [ext_resource type="Script" path="res://player.gd" id="3_mla6l"]
 [ext_resource type="PackedScene" uid="uid://5fpk8kbc81rn" path="res://MainMap.tscn" id="4_ghanx"]
+[ext_resource type="AudioStream" uid="uid://d08le8askh0qg" path="res://gamejamMusic.ogg" id="5_w04hq"]
 
 [node name="MAIN" type="Node2D"]
 script = ExtResource("1_72jgi")
@@ -26,3 +27,10 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="TileMap" parent="." instance=ExtResource("4_ghanx")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_w04hq")
+volume_db = -5.422
+autoplay = true
+
+[connection signal="win" from="palyer" to="." method="_on_palyer_win"]
