@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5ijpugshf6j8"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_72jgi"]
+[ext_resource type="Texture2D" uid="uid://dv2lqvdy08uji" path="res://icon.svg" id="2_7q0x4"]
+[ext_resource type="Script" path="res://player.gd" id="3_mla6l"]
+[ext_resource type="PackedScene" uid="uid://5fpk8kbc81rn" path="res://MainMap.tscn" id="4_ghanx"]
+
+[node name="MAIN" type="Node2D"]
+script = ExtResource("1_72jgi")
+
+[node name="palyer" type="Sprite2D" parent="."]
+position = Vector2(-68, -200)
+texture = ExtResource("2_7q0x4")
+script = ExtResource("3_mla6l")
+
+[node name="Camera2D" type="Camera2D" parent="palyer"]
+zoom = Vector2(0.15, 0.15)
+position_smoothing_enabled = true
+
+[node name="line" type="Line2D" parent="palyer"]
+points = PackedVector2Array(0, 0, 0, 0)
+
+[node name="cast" type="RayCast2D" parent="palyer"]
+exclude_parent = false
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="TileMap" parent="." instance=ExtResource("4_ghanx")]
